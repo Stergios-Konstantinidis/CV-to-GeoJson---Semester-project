@@ -112,7 +112,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             var text = button.GetComponentInChildren<TextMeshProUGUI>();
             if (text == null)
-                return;
+                return; 
 
             text.color = s_DisabledButtonColor;
         }
@@ -128,7 +128,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             public string gameObjectName { get; set; }
             public string menuName { get; set; }
 
-            public MenuInfo(string gameObjectName, string menuName)
+            public MenuInfo(string gameObjectName, string menuName) 
             {
                 this.gameObjectName = gameObjectName;
                 this.menuName = menuName;
