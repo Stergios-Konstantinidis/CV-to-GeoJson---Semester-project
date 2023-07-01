@@ -1,6 +1,8 @@
-# Semester Project of Stergios Konstantinidis; spring semester at HEC-Lausanne MScIS
+# Semester Project of Stergios Konstantinidis
+## Spring semester at HEC-Lausanne MScIS
+### In development
 
-Example AR scenes that use [AR Foundation 5.1](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html) and demonstrate its features. Each feature is used in a minimal sample scene with example code that you can modify or copy into your project.
+A project using unity's AR tools to generate indoor GeoJson maps
 
 This sample project depends on four Unity packages:
 
