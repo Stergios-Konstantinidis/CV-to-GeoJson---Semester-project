@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 346867436}
   - component: {fileID: 346867442}
   - component: {fileID: 346867445}
+  - component: {fileID: 346867446}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -630,6 +631,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &346867446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346867435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b64886edb34446284b8292e887a23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointWebHookURL: 
+  SurfaceWebHookURL: 
 --- !u!1 &365783159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1911,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 346867446}
+        m_TargetAssemblyTypeName: PreferencesSingleton, Assembly-CSharp
+        m_MethodName: SetSurfaceWebHookURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2571,7 +2598,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 346867446}
+        m_TargetAssemblyTypeName: PreferencesSingleton, Assembly-CSharp
+        m_MethodName: SetPointWebHookURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3636,7 +3675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00024414062}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.00024414062}
   m_SizeDelta: {x: 1152, y: 2532}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1459382204
@@ -3722,7 +3761,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1141134466}
   m_HandleRect: {fileID: 1141134465}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4381,10 +4420,10 @@ MonoBehaviour:
   m_DirectionalAnchorRotationAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Directional Anchor Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 27ca3a0c-fade-4db1-8f63-42fd49060b01
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -5324,7 +5363,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1130901185}
   m_Direction: 2
   m_Value: 1.0000029
-  m_Size: 0.96603477
+  m_Size: 0.9660348
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
