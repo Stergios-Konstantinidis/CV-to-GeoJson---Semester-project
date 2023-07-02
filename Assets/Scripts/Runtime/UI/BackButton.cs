@@ -14,6 +14,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             set => m_BackButton = value;
         }
 
+
         void Start()
         {
             if (Application.CanStreamedLevelBeLoaded("Menu"))
@@ -32,5 +33,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if (Application.CanStreamedLevelBeLoaded("Menu"))
                 SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
+        
     }
 }
