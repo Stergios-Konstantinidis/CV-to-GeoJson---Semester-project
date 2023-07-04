@@ -10,23 +10,18 @@ public class PreferencesSingleton : MonoBehaviour
     public static PreferencesSingleton Instance { get; private set; }
 
 
-    private void Awake() 
-    { 
-    // If there is an instance, and it's not me, delete myself.
-    
-    if (Instance != null && Instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            Instance = this; 
-        } 
-    }
+    public static PreferencesSingleton GetInstance()
+        {
+            if (Instance == null)
+            {
+                Instance = new PreferencesSingleton();
+            }
+            return Instance;
+        }
 
     private bool accountForBuildingCoordinates;
     ///<summary> This function determines if we should send the points and surfaces in a cartesian way or not.</summary>
-    /// <param name="value">Is a boolean, it is either equal to true or false.</param>
+    /// <param name="values">Is a boolean, it is either equal to true or false.</param>
     public void setAccountForBuildingCoordinates(bool values)
     {
         this.accountForBuildingCoordinates = values;
@@ -77,6 +72,18 @@ public class PreferencesSingleton : MonoBehaviour
     public void SetSurfaceWebHookURL(string URL)
     {
         this.SurfaceWebHookURL = URL;
+    }
+
+    public int MaxHeight;
+    ///<summary> This function ensures that the highest point detected is stored properly.
+    /// When a new value is submitted, if it is higher than tha current highest value then this value is set as max height</summary>
+    /// <param name="HeightToTest">The height to check if higher than the current height.</param>
+    public void SubmitNewMaxHeight(int HeightToTest)
+    {
+        if(HeightToTest >= this.MaxHeight)
+        {
+            this.MaxHeight = HeightToTest;
+        }
     }
 
 }
