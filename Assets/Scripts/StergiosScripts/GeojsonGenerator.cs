@@ -1,6 +1,15 @@
+// (c) Stergios Konstantinidis 2023.
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Serialization;
+using System.Text;
+using System;
+using System.Security.Cryptography;
+
 
 public class GeojsonGenerator : MonoBehaviour
 {
@@ -77,7 +86,7 @@ public class GeojsonGenerator : MonoBehaviour
         return "\"type\": \"Feature\"";
     }
 
-    public void SetName(String nameToGive)
+    public void SetName(string nameToGive)
     {
         this.name = nameToGive;
     }
