@@ -13,20 +13,23 @@ public class _SendAllPlanes : MonoBehaviour
     private List<ARPlane> allPlanes;
     private PreferencesSingleton config = PreferencesSingleton.GetInstance();
 
+
+
     public void UpdatePlanesList()
     {
-        planeManager.GetAllPlanes(allPlanes);
+        //allPlanes = List<GameObject> planes = UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (ARPlane plane in allPlanes)
         {
-            List<Vector3> edgePoints = new List<Vector3>();
-            if (plane.TryGetBoundary(edgePoints, Space.Self))
+            List<Vector3> plane3d = new List<Vector3>();
+            foreach (var plane2d in plane.boundary)
             {
-                GeojsonGenerator jsonGenerator = new GeojsonGenerator(edgePoints);
-                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsonGenerator.GetGeoJson());
-                UnityWebRequest www = UnityWebRequest.Put(config.SurfaceWebHookURL, bytes);
-                www.SetRequestHeader("Content-Type", "application/json");
-                www.SendWebRequest();
+                plane3d.Add(new Vector3(plane2d[0], 0,plane2d[1]));
             }
+            GeojsonGenerator jsonGenerator = new GeojsonGenerator(plane3d);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsonGenerator.GetGeoJson());
+            UnityWebRequest www = UnityWebRequest.Put(config.SurfaceWebHookURL, bytes);
+            www.SetRequestHeader("Content-Type", "application/json");
+            www.SendWebRequest();
         }
     }
 }
