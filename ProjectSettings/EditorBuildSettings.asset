@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StergiosScenes/PointFilter.unity
     guid: 65a6728d21f9240fcb19ba284b1d7de3
-  - enabled: 0
-    path: Assets/Scenes/StergiosScenes/PointCloudWSurfacesTest.unity
-    guid: f97ea9912b13a4c38a92270f29cb77c6
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: c52d3bb36b4c86f47af54ab9c7a02589,
       type: 2}

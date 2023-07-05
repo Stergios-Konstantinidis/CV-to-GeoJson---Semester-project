@@ -40,15 +40,15 @@ public class Properties : MonoBehaviour
     private PreferencesSingleton prefs = PreferencesSingleton.GetInstance();
 
     #region Monobehaviour Methods
-
-     public Properties()
+ 
+     public Properties(List<Vector3> boundaries)
         {
             this.id = GetTimeHash();
             this.color = "null";
             this.base_height = 0;
             this.height = prefs.MaxHeight;
             this.name = null;
-            this.edges = new List<Vector3>();
+            this.edges = boundaries;
 
         }
 
