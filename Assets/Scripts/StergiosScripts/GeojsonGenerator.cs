@@ -106,7 +106,7 @@ public class GeojsonGenerator : MonoBehaviour
         string toReturnString = "\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [ \"";
         foreach(Vector3 position in this.edges)
         {
-            toReturnString = toReturnString + "[" + position[0]+", " +position[3] +"], ";
+            toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], ";
         }
         return toReturnString.Substring(0, toReturnString.Length - 2) + "] ]";
     }

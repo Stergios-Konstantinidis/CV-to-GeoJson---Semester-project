@@ -418,6 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131919184}
   - component: {fileID: 1131919183}
+  - component: {fileID: 1131919186}
   - component: {fileID: 1131919182}
   - component: {fileID: 1131919181}
   - component: {fileID: 1131919185}
@@ -527,6 +528,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Proceed: {fileID: 1661725518}
+--- !u!114 &1131919186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131919180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e408805047dcf45b698e3d8d2f1873de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeManager: {fileID: 0}
 --- !u!1 &1221676393
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +682,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661725518}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -705,10 +719,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1131919185}
-        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.Samples.ProceedButton,
-          Assembly-CSharp
-        m_MethodName: ProceedButtonPressed
+      - m_Target: {fileID: 1131919186}
+        m_TargetAssemblyTypeName: _SendAllPlanes, Assembly-CSharp
+        m_MethodName: SendData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -725,7 +738,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661725518}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -827,7 +840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Proceed
+  m_Text: Send Points
 --- !u!222 &1860882497
 CanvasRenderer:
   m_ObjectHideFlags: 0
