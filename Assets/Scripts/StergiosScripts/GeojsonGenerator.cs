@@ -13,20 +13,20 @@ using System.Security.Cryptography;
 
 public class GeojsonGenerator : MonoBehaviour
 {
-    //"properties": { "id": "01dffe8d499158d5cdb4590ea6b0a9dc", "type": null, "color": null, "base_height": null, "height": null, "level": null, "name": null, "connecting": null }
+    //'properties': { 'id': '01dffe8d499158d5cdb4590ea6b0a9dc', 'type': null, 'color': null, 'base_height': null, 'height': null, 'level': null, 'name': null, 'connecting': null }
     //this needs to be sent
-    private string id;
+    private String id;
 
-    private string color;
+    private String color;
 
     private int base_height;
 
     private int height;
 
-    private string name;
+    private String name;
 
     [SerializeField, FormerlySerializedAs("GeoJsonEntry")]
-    private string GeojsonString;
+    private String GeojsonString;
 
 
     private List<Vector3> edges;
@@ -41,7 +41,7 @@ public class GeojsonGenerator : MonoBehaviour
             this.color = "null";
             this.base_height = 0;
             this.height = prefs.MaxHeight;
-            this.name = null;
+            this.name = "null";
             this.edges = boundaries;
 
         }
@@ -50,19 +50,19 @@ public class GeojsonGenerator : MonoBehaviour
 
 
     #region Private Methods
-    private string GetTimeHash()
+    private String GetTimeHash()
     {
         var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(System.DateTime.Now.ToString("hh.mm.ss.fff")));
         var sb = new StringBuilder(hash.Length * 2);
         foreach(byte b in hash)
         {
-            // can be "x2" if you want lowercase
+            // can be 'x2' if you want lowercase
             sb.Append(b.ToString("X2"));
         }
-        return sb.ToString().Substring(0,32);
+        return sb.ToString().Substring(32);
     }
 
-    private void setColor(string couleur)
+    private void setColor(String couleur)
     {
         this.color = couleur;
     }
@@ -81,40 +81,40 @@ public class GeojsonGenerator : MonoBehaviour
 
     #region Public Methods
     ///<summary> This function returns a GeoJson line for this surface. </summary>
-    public string GetGeoJson()
+    public String GetGeoJson()
     {
-        this.GeojsonString = "{ " + GetFeature() + ", " + GetProperties() + ", " + GetGeometry() + " } }";
+        this.GeojsonString = "{" + GetFeature() + ", " + GetProperties() + ", " + GetGeometry() + "}}";
         return this.GeojsonString;
         
     }
-    public string GetFeature()
+    public String GetFeature()
     {
-        return " 'type': 'Feature' ";
+        return @"""type"": ""Feature""";
     }
 
-    public void SetName(string nameToGive)
+    public void SetName(String nameToGive)
     {
         this.name = nameToGive;
     }
     
-    public string GetProperties()
+    public String GetProperties()
     {
-        string couleur = null;
+        String couleur = null;
         if (this.color != null)
         {
             couleur = this.color;
         }
-        return " 'properties': { 'id': ' " + this.id + " ', 'type': null, 'color': ' " + couleur + " ', 'base_height': " + this.base_height + ", 'height': ' "+this.height+" ', 'level': 1, 'name': ' " + this.name +" ', 'connecting': null }";
+        return @"""properties"": {""id"":"" " + this.id + @""", ""type"": null, ""color"": "" " + couleur + @" "", ""base_height"":" + this.base_height + @", ""height"":"""+this.height+@""", ""level"": 1, ""name"": """ + this.name +@""", ""connecting"": null}";
     }
 
-    public string GetGeometry()
+    public String GetGeometry()
     {
-        string toReturnString = " 'geometry': { 'type': 'Polygon', 'coordinates': [ [ " ;
+        String toReturnString = @"""geometry"":{""type"": ""Polygon"", ""coordinates"": [ [" ;
         foreach(Vector3 position in this.edges)
         {
             toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], " ;
         }
-        return toReturnString.Substring(0, toReturnString.Length - 2) + "] ]";
+        return toReturnString.Substring(toReturnString.Length - 2) + "] ]";
     }
 
 
