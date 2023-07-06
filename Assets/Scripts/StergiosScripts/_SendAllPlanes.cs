@@ -13,20 +13,23 @@ public class _SendAllPlanes : MonoBehaviour
     private List<ARPlane> allPlanes;
     private PreferencesSingleton config = PreferencesSingleton.GetInstance();
 
-    public void UpdatePlanesList()
+    public void SendData()
     {
-        planeManager.GetAllPlanes(allPlanes);
-        foreach (ARPlane plane in allPlanes)
+        MeshFilter[] amf = (MeshFilter[])Resources.FindObjectsOfTypeAll(typeof(MeshFilter));
+        foreach (MeshFilter meshFilter in amf)
         {
-            List<Vector3> edgePoints = new List<Vector3>();
-            if (plane.TryGetBoundary(edgePoints, Space.Self))
+            Mesh mesh = meshFilter.mesh;
+            Vector3[] vertices = mesh.vertices;
+            List<Vector3> points = new List<Vector3>();
+            foreach (Vector3 item in vertices)
             {
-                GeojsonGenerator jsonGenerator = new GeojsonGenerator(edgePoints);
-                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jsonGenerator.GetGeoJson());
-                UnityWebRequest www = UnityWebRequest.Put(config.SurfaceWebHookURL, bytes);
-                www.SetRequestHeader("Content-Type", "application/json");
-                www.SendWebRequest();
+                points.Add(item); 
             }
+            GeojsonGenerator GeoJSONEntry = new GeojsonGenerator(points);
+            string jsonStringTrial = JsonUtility.ToJson(GeoJSONEntry.GetGeoJson());
+            UnityWebRequest www = UnityWebRequest.Put("https://webhook.site/f49e79b9-81f0-4168-ba01-28d3b7d00201", jsonStringTrial);
+            www.SetRequestHeader("Content-Type", "application/json");
+            www.Send();
         }
     }
 }
