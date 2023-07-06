@@ -25,6 +25,10 @@ public class GeojsonGenerator : MonoBehaviour
 
     private string name;
 
+    [SerializeField, FormerlySerializedAs("GeoJsonEntry")]
+    private string GeojsonString;
+
+
     private List<Vector3> edges;
 
     private PreferencesSingleton prefs = PreferencesSingleton.GetInstance();
@@ -79,11 +83,13 @@ public class GeojsonGenerator : MonoBehaviour
     ///<summary> This function returns a GeoJson line for this surface. </summary>
     public string GetGeoJson()
     {
-        return "{ " + GetFeature() + ", " + GetProperties() + ", " + GetGeometry() + " } }";
+        this.GeojsonString = "{ " + GetFeature() + ", " + GetProperties() + ", " + GetGeometry() + " } }";
+        return this.GeojsonString;
+        
     }
     public string GetFeature()
     {
-        return "\"type\": \"Feature\"";
+        return " 'type': 'Feature' ";
     }
 
     public void SetName(string nameToGive)
@@ -98,15 +104,15 @@ public class GeojsonGenerator : MonoBehaviour
         {
             couleur = this.color;
         }
-        return "\"properties\": { \"id\": \"" + this.id + "\", \"type\": null, \"color\": " + couleur + ", \"base_height\": " + this.base_height + ", \"height\": "+this.height+", \"level\": 1, \"name\": \""+ this.name +", \"connecting\": null }";
+        return " 'properties': { 'id': ' " + this.id + " ', 'type': null, 'color': ' " + couleur + " ', 'base_height': " + this.base_height + ", 'height': ' "+this.height+" ', 'level': 1, 'name': ' " + this.name +" ', 'connecting': null }";
     }
 
     public string GetGeometry()
     {
-        string toReturnString = "\"geometry\": { \"type\": \"Polygon\", \"coordinates\": [ [ \"";
+        string toReturnString = " 'geometry': { 'type': 'Polygon', 'coordinates': [ [ " ;
         foreach(Vector3 position in this.edges)
         {
-            toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], ";
+            toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], " ;
         }
         return toReturnString.Substring(0, toReturnString.Length - 2) + "] ]";
     }
