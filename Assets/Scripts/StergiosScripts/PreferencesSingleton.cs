@@ -66,7 +66,7 @@ public class PreferencesSingleton : MonoBehaviour
         this.pointWebHookURL = URL;
     }
 
-    public string SurfaceWebHookURL;
+    public string SurfaceWebHookURL = "https://webhook.site/f49e79b9-81f0-4168-ba01-28d3b7d00201";
     ///<summary> This function sets the URL that will receive all surface coordinates in Vector 3 format.</summary>
     /// <param name="URL">The URL able to support a webhook.</param>
     public void SetSurfaceWebHookURL(string URL)

@@ -28,7 +28,7 @@ public class _SendAllPlanes : MonoBehaviour
             GeojsonGenerator GeoJSONEntry = new GeojsonGenerator(points);
             GeoJSONEntry.GetGeoJson(); //generaes
             string jsonStringTrial = JsonUtility.ToJson(GeoJSONEntry);
-            UnityWebRequest www = UnityWebRequest.Put("https://webhook.site/f49e79b9-81f0-4168-ba01-28d3b7d00201", jsonStringTrial);
+            UnityWebRequest www = UnityWebRequest.Put(config.SurfaceWebHookURL, jsonStringTrial);
             www.SetRequestHeader("Content-Type", "application/json");
             www.Send();
         }

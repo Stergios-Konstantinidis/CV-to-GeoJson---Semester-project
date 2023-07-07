@@ -110,10 +110,12 @@ public class GeojsonGenerator : MonoBehaviour
     public string GetGeometry()
     {
         string toReturnString = @"""geometry"":{""type"": ""Polygon"", ""coordinates"": [ [" ;
+        Vector3 firstEdge = this.edges[0];
         foreach(Vector3 position in this.edges)
         {
             toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], " ;
         }
+        toReturnString = toReturnString + "[" + firstEdge[0]+", " +firstEdge[2] +"], " ; //first point needs to be the same as the last one
         return toReturnString.Substring(0,toReturnString.Length - 2) + "] ]";
     }
 
