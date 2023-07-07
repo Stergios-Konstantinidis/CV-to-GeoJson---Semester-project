@@ -50,7 +50,7 @@ public class GeojsonGenerator : MonoBehaviour
 
 
     #region Private Methods
-    private String GetTimeHash()
+    private string GetTimeHash()
     {
         var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(System.DateTime.Now.ToString("hh.mm.ss.fff")));
         var sb = new StringBuilder(hash.Length * 2);
@@ -59,7 +59,7 @@ public class GeojsonGenerator : MonoBehaviour
             // can be 'x2' if you want lowercase
             sb.Append(b.ToString("X2"));
         }
-        return sb.ToString().Substring(32);
+        return sb.ToString().Substring(0,32);
     }
 
     private void setColor(String couleur)
@@ -107,14 +107,14 @@ public class GeojsonGenerator : MonoBehaviour
         return @"""properties"": {""id"":"" " + this.id + @""", ""type"": null, ""color"": "" " + couleur + @" "", ""base_height"":" + this.base_height + @", ""height"":"""+this.height+@""", ""level"": 1, ""name"": """ + this.name +@""", ""connecting"": null}";
     }
 
-    public String GetGeometry()
+    public string GetGeometry()
     {
-        String toReturnString = @"""geometry"":{""type"": ""Polygon"", ""coordinates"": [ [" ;
+        string toReturnString = @"""geometry"":{""type"": ""Polygon"", ""coordinates"": [ [" ;
         foreach(Vector3 position in this.edges)
         {
             toReturnString = toReturnString + "[" + position[0]+", " +position[2] +"], " ;
         }
-        return toReturnString.Substring(toReturnString.Length - 2) + "] ]";
+        return toReturnString.Substring(0,toReturnString.Length - 2) + "] ]";
     }
 
 

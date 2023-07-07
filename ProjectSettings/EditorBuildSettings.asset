@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PointClouds/AllPointCloudPoints.unity
     guid: a84b70115cd154cf59b84651a828ac60
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StergiosScenes/PointFilter.unity
     guid: 65a6728d21f9240fcb19ba284b1d7de3
   m_configObjects:
