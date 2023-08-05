@@ -24,9 +24,9 @@ public class _SendAllPlanes : MonoBehaviour
             foreach (Vector3 item in vertices)
             {
                 points.Add(item); 
+                Debug.Log(item);
             }
             GeojsonGenerator GeoJSONEntry = new GeojsonGenerator(points);
-            GeoJSONEntry.GetGeoJson(); //generaes
             string jsonStringTrial = JsonUtility.ToJson(GeoJSONEntry);
             UnityWebRequest www = UnityWebRequest.Put(config.SurfaceWebHookURL, jsonStringTrial);
             www.SetRequestHeader("Content-Type", "application/json");
